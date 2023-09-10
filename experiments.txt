@@ -1,0 +1,53 @@
+#These are the experiments we conducted for the paper:
+
+#With --sat_type SoundingEarth:
+1. sat_audio_frozen:
+python -m geoclap.train --data_type sat_audio --sat_type SoundingEarth --run_name SoundingEarth_sat_audio_frozen --wandb_mode online --mode train --train_batch_size 256 --max_epochs 100 --freeze_audio_model True --saved_audio_embeds False --freeze_text_model True --saved_text_embeds False
+
+2. sat_audio_text_frozen (without_address):
+python -m geoclap.train --data_type sat_audio_text --sat_type SoundingEarth --run_name SoundingEarth_sat_audio_text_no_address_frozen --wandb_mode online --mode train --train_batch_size 256 --max_epochs 100 --freeze_audio_model True --saved_audio_embeds False --freeze_text_model True --saved_text_embeds False --text_type without_address 
+
+3. sat_audio_text_frozen (with_address):
+python -m geoclap.train --data_type sat_audio_text --sat_type SoundingEarth --run_name SoundingEarth_sat_audio_text_frozen --wandb_mode online --mode train --train_batch_size 256 --max_epochs 100 --freeze_audio_model True --saved_audio_embeds False --freeze_text_model True --saved_text_embeds False
+
+4. sat_audio_text_frozen (only_address):
+python -m geoclap.train --data_type sat_audio_text --sat_type SoundingEarth --run_name SoundingEarth_sat_audio_text_only_address_frozen --wandb_mode online --mode train --train_batch_size 256 --max_epochs 100 --freeze_audio_model True --saved_audio_embeds False --freeze_text_model True --saved_text_embeds False --text_type only_address
+
+5. sat_audio:
+python -m geoclap.train --data_type sat_audio --sat_type SoundingEarth --run_name SoundingEarth_sat_audio --wandb_mode online --mode train --train_batch_size 128 --max_epochs 30 --freeze_audio_model False --saved_audio_embeds False --freeze_text_model False --saved_text_embeds False
+
+6. sat_audio_text (without_address):
+python -m geoclap.train --data_type sat_audio_text --sat_type SoundingEarth --run_name SoundingEarth_sat_audio_text_no_address --wandb_mode online --mode train --train_batch_size 128 --max_epochs 30 --freeze_audio_model False --saved_audio_embeds False --freeze_text_model False --saved_text_embeds False  --text_type without_address
+
+7. sat_audio_text (with_address):
+python -m geoclap.train --data_type sat_audio_text --sat_type SoundingEarth --run_name SoundingEarth_sat_audio_text --wandb_mode online --mode train --train_batch_size 128 --max_epochs 30 --freeze_audio_model False --saved_audio_embeds False --freeze_text_model False --saved_text_embeds False
+
+8. sat_audio_text (only_address):
+python -m geoclap.train --data_type sat_audio_text --sat_type SoundingEarth --run_name SoundingEarth_sat_audio_text_only_address --wandb_mode online --mode train --train_batch_size 128 --max_epochs 30 --freeze_audio_model False --saved_audio_embeds False --freeze_text_model False --saved_text_embeds False --text_type only_address
+
+
+#With --sat_type sentinel:
+1. sat_audio_frozen:
+python -m geoclap.train --data_type sat_audio --sat_type sentinel --run_name sentinel_sat_audio_frozen --wandb_mode online --mode train --train_batch_size 256 --max_epochs 100 --freeze_audio_model True --saved_audio_embeds False --freeze_text_model True --saved_text_embeds False
+
+2. sat_audio_text_frozen (without_address):
+python -m geoclap.train --data_type sat_audio_text --sat_type sentinel --run_name sentinel_sat_audio_text_no_address_frozen --wandb_mode online --mode train --train_batch_size 256 --max_epochs 100 --freeze_audio_model True --saved_audio_embeds False --freeze_text_model True --saved_text_embeds False --text_type without_address
+
+3. sat_audio_text_frozen (with_address):
+python -m geoclap.train --data_type sat_audio_text --sat_type sentinel --run_name sentinel_sat_audio_text_frozen --wandb_mode online --mode train --train_batch_size 256 --max_epochs 100 --freeze_audio_model True --saved_audio_embeds False --freeze_text_model True --saved_text_embeds False
+
+4. sat_audio_text_frozen (only_address):
+python -m geoclap.train --data_type sat_audio_text --sat_type sentinel --run_name sentinel_sat_audio_text_only_address_frozen --wandb_mode online --mode train --train_batch_size 256 --max_epochs 100 --freeze_audio_model True --saved_audio_embeds False --freeze_text_model True --saved_text_embeds False --text_type only_address
+
+5. sat_audio:
+python -m geoclap.train --data_type sat_audio --sat_type sentinel --run_name sentinel_sat_audio --wandb_mode online --mode train --train_batch_size 128 --max_epochs 30 --freeze_audio_model False --saved_audio_embeds False --freeze_text_model False --saved_text_embeds False
+
+6. sat_audio_text (without_address):
+python -m geoclap.train --data_type sat_audio_text --sat_type sentinel --run_name sentinel_sat_audio_text_no_address --wandb_mode online --mode train --train_batch_size 128 --max_epochs 30 --freeze_audio_model False --saved_audio_embeds False --freeze_text_model False --saved_text_embeds False  --text_type without_address
+
+7. sat_audio_text (with_address):
+python -m geoclap.train --data_type sat_audio_text --sat_type sentinel --run_name sentinel_sat_audio_text --wandb_mode online --mode train --train_batch_size 128 --max_epochs 30 --freeze_audio_model False --saved_audio_embeds False --freeze_text_model False --saved_text_embeds False
+
+8. sat_audio_text (only_address):
+python -m geoclap.train --data_type sat_audio_text --sat_type sentinel --run_name sentinel_sat_audio_text_only_address --wandb_mode online --mode train --train_batch_size 128 --max_epochs 30 --freeze_audio_model False --saved_audio_embeds False --freeze_text_model False --saved_text_embeds False --text_type only_address
+

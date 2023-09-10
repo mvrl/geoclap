@@ -1,0 +1,29 @@
+name: geoclap
+channels:
+  - pytorch
+  - nvidia
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10.11
+  - nginx==1.25.0
+  - pip
+  - pip:
+    - pandas
+    - geopy
+    - cleantext
+    - yacs
+    - torch
+    - torchvision
+    - torchaudio
+    - pytorch-lightning
+    - transformers
+    - timm
+    - argparse
+    - wandb
+    - pyproj
+    - mapproxy
+    - avro
+    - webdataset
+    - pymap3d
+    - lmdb

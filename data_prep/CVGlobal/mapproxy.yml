@@ -1,0 +1,155 @@
+# 
+# Useful ones here: https://gist.github.com/seanlinmt/bc16a8ab996b6377946404daec30f433
+#
+globals:
+  http:
+    client_timeout: 60
+  cache:
+    meta_buffer: 0 
+  image: 
+    paletted: False
+
+services:
+  demo:
+  wmts:
+    restful: true
+    restful_template: /{Layer}-{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.png
+  wms:
+    image_formats: ['image/jpeg', 'image/png', 'image/GeoTIFF', 'image/tiff']
+    featureinfo_types: [text, html, xml, json]
+    md:
+      title: MVRL Cache 
+
+layers:
+  - name: terrain 
+    title: Terrain 
+    sources: [terrain_cache]
+  - name: sentinel
+    title: Sentinel 
+    sources: [sentinel_cache]
+  - name: osm 
+    title: Open Street Maps 
+    sources: [osm_cache]
+  - name: google_satellite 
+    title: Google Satellite layer
+    sources: [google_satellite_cache]
+
+caches:
+  sentinel_cache:
+    sources: [sentinel_source]
+    minimize_meta_requests: true
+    image:
+      format: image/jpeg
+      resampling_method: bilinear 
+    grids: [GLOBAL_WEBMERCATOR]
+    cache: 
+      type: sqlite 
+      directory: /storage1/fs1/jacobsn/Active/user_k.subash/projects/geoclap/data_prep/CVGlobal/cache/sentinel
+  terrain_cache:
+    sources: [terrain_source]
+    minimize_meta_requests: true
+    grids: [GLOBAL_WEBMERCATOR]
+    upscale_tiles: 1
+    image:
+      format: image/png
+      resampling_method: nearest 
+      mode: RGB
+      colors: 0
+      transparent: false
+    cache: 
+      type: sqlite 
+      directory: /storage1/fs1/jacobsn/Active/user_k.subash/projects/geoclap/data_prep/CVGlobal/cache/terrain
+  osm_cache:
+    sources: [osm_source]
+    minimize_meta_requests: true
+    grids: [GLOBAL_WEBMERCATOR]
+    cache: 
+      type: sqlite 
+      directory: /storage1/fs1/jacobsn/Active/user_k.subash/projects/geoclap/data_prep/CVGlobal/cache/osm
+  google_satellite_cache:
+    grids: [GLOBAL_WEBMERCATOR]
+    minimize_meta_requests: true
+    sources: [google_satellite_source]
+    image:
+      format: image/png
+      resampling_method: bilinear 
+    cache:
+      type: sqlite
+      directory: /storage1/fs1/jacobsn/Active/user_k.subash/projects/geoclap/data_prep/CVGlobal/cache/google_satellite
+
+sources:
+  sentinel_source:
+    type: wms 
+    concurrent_requests: 1
+    image: 
+      resampling_method: nearest 
+      format: image/png
+      mode: RGB
+      colors: 0
+      transparent: false
+    req:
+      url: https://tiles.maps.eox.at/wms
+      layers: s2cloudless-2020_3857
+    http:
+      # defines how long MapProxy should wait for data from source servers
+      client_timeout: 60 # seconds
+  terrain_source:
+    type: tile 
+    grid: GLOBAL_WEBMERCATOR
+    url: https://s3.amazonaws.com/elevation-tiles-prod/terrarium/%(z)s/%(x)s/%(y)s.png
+    max_res: 4 
+  osm_source:
+    type: tile 
+    concurrent_requests: 1
+    grid: GLOBAL_WEBMERCATOR
+    url: https://tile.openstreetmap.org/%(z)s/%(x)s/%(y)s.png
+  state_ky_naip_source:
+    type: arcgis
+    req:
+      url: http://kyraster.ky.gov/arcgis/rest/services/ImageServices/Ky_NAIP_2020_2FT/ImageServer
+      transparent: true
+    max_res: .6 
+    min_res: 100000 
+    on_error:
+       404:
+          response: transparent
+          cache: False
+  state_ky_2020_source:
+    type: arcgis
+    req:
+      #url: https://kyraster.ky.gov/arcgis/rest/services/ImageServices/Ky_KYAPED_2020_6IN_WGS84WM/ImageServer 
+      url: https://kyraster.ky.gov/arcgis/rest/services/ImageServices/Ky_KYAPED_2020_6IN/ImageServer 
+      transparent: true
+    max_res: .1 
+    min_res: 100 
+    on_error:
+       404:
+          response: transparent
+          cache: False
+  state_ky_2019_source:
+    type: arcgis
+    req:
+      #url: https://kyraster.ky.gov/arcgis/rest/services/ImageServices/Ky_KYAPED_2019_6IN_WGS84WM/ImageServer 
+      url: https://kyraster.ky.gov/arcgis/rest/services/ImageServices/Ky_KYAPED_2019_6IN/ImageServer 
+      transparent: true
+    max_res: .1 
+    min_res: 1000 
+    on_error:
+       404:
+          response: transparent
+          cache: False
+  state_hennepin_2020_source:
+    type: arcgis
+    req:
+      layers: Image 
+      url: https://gis.hennepin.us/arcgis/rest/services/Maps/UTM_CACHE_AERIAL/MapServer
+      transparent: true
+  google_satellite_source:
+    type: tile
+    url: https://mt2.google.com/vt/lyrs=s&x=%(x)s&y=%(y)s&z=%(z)s
+    grid: GLOBAL_WEBMERCATOR
+    transparent: true
+    on_error:
+       404:
+          response: transparent
+          cache: False
