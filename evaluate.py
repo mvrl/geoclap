@@ -1,4 +1,6 @@
 ##local imports
+## Note: Since GeoCLAP models trained with frozen CLAP embeddings don't have audio/text encoders.
+## Therfore, in order to evaluate those models, this script assumes that those embeddings are precomputed and saved already.
 from .metrics import get_retrevial_metrics
 from .train import GeoCLAP, l2normalize
 import torch
@@ -96,8 +98,8 @@ class Evaluate(object):
                                                                         audio_model= hparams.audio_encoder,
                                                                         data_type = hparams.data_type,
                                                                         metadata_type= hparams.metadata_type,
-                                                                        saved_audio_embeds= False,
-                                                                        saved_text_embeds= False,
+                                                                        saved_audio_embeds= hparams.saved_audio_embeds,
+                                                                        saved_text_embeds= hparams.saved_text_embeds,
                                                                         sat_type = hparams.sat_type,
                                                                         text_type = hparams.text_type),
                                             num_workers=16, batch_size=256, shuffle=False, drop_last=False,pin_memory=True)
@@ -110,8 +112,8 @@ class Evaluate(object):
                                                                         audio_model= hparams.audio_encoder,
                                                                         data_type = hparams.data_type,
                                                                         metadata_type= hparams.metadata_type,
-                                                                        saved_audio_embeds= False,
-                                                                        saved_text_embeds= False,
+                                                                        saved_audio_embeds= hparams.saved_audio_embeds,
+                                                                        saved_text_embeds= hparams.saved_text_embeds,
                                                                         sat_type = hparams.sat_type
                                                                         ),
                                             num_workers=16, batch_size=256, shuffle=False, drop_last=False,pin_memory=True)
@@ -154,7 +156,7 @@ class Evaluate(object):
 if __name__ == '__main__':
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     parser = ArgumentParser(description='', formatter_class=RawTextHelpFormatter)
-    parser.add_argument('--ckpt_path', type=str)
+    parser.add_argument('--ckpt_path', type=str, default='/storage1/fs1/jacobsn/Active/user_k.subash/projects/geoclap/logs/best_ckpts/geoclap_sentinel_best_model.ckpt')
     args = parser.parse_args()
     #params
     set_seed(56)

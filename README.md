@@ -61,7 +61,7 @@ For reproducibility, we have provided the required metadata of the dataset and i
 
 10. Accordingly, as demonstrated in the main paper, for a region of interest (a `.csv` file containing (latitude,longitude) for all locations in a grid covering the region), we can compute cosine similarity of text and/or audio query with all satellite imagery over the region. Note for audio query, the script randomly selects audio from ESC50 dataset for a predefined set of classes in `cfg.heatmap_classes`.
     ```
-    python -m GeoCLAP.miscs.compute_similarity --ckpt_path "path-to-your-geoclap-checkpoint" \
+    python -m geoclap.miscs.compute_similarity --ckpt_path "path-to-your-geoclap-checkpoint" \
                                                --region_file_path "path-to-region_file.csv" \
                                                --sat_data_path "path-to-satellite-images-for-the-region" \
                                                --text_query "animal farm;chirping birds;car horn" \
@@ -70,7 +70,7 @@ For reproducibility, we have provided the required metadata of the dataset and i
 
 11. As demonstrated in supplementary materials of the paper, we provide a demo script to use the pre-trained GeoCLAP model to query with multiple textual prompts as well as to retrieve top audio from our test-set gallery (using the precomputed test-set audio embeddings from step 8.)
     ```
-    python -m GeoCLAP.miscs.demo --ckpt_path "path-to-checkpoint-of-the-best-model-trained-on-sat-imagery" \
+    python -m geoclap.miscs.demo --ckpt_path "path-to-checkpoint-of-the-best-model-trained-on-sat-imagery" \
                                  --region_file_path "path-to-region_file.csv" \
                                  --sat_data_path  "path-to-sat-images-for-the-region" \
                                  --query_type "audio_text" \
