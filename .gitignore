@@ -2,6 +2,7 @@
 **/__pycache__/
 wandb/
 logs/
+cache/
 .data_prep/.ipynb_checkpoints/
 .models/.ipynb_checkpoints/
 .utils/.ipynb_checkpoints/
