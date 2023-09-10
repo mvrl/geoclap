@@ -96,8 +96,8 @@ class Evaluate(object):
                                                                         audio_model= hparams.audio_encoder,
                                                                         data_type = hparams.data_type,
                                                                         metadata_type= hparams.metadata_type,
-                                                                        saved_audio_embeds= hparams.saved_audio_embeds,
-                                                                        saved_text_embeds= hparams.saved_text_embeds,
+                                                                        saved_audio_embeds= False,
+                                                                        saved_text_embeds= False,
                                                                         sat_type = hparams.sat_type,
                                                                         text_type = hparams.text_type),
                                             num_workers=16, batch_size=256, shuffle=False, drop_last=False,pin_memory=True)
@@ -110,8 +110,8 @@ class Evaluate(object):
                                                                         audio_model= hparams.audio_encoder,
                                                                         data_type = hparams.data_type,
                                                                         metadata_type= hparams.metadata_type,
-                                                                        saved_audio_embeds= hparams.saved_audio_embeds,
-                                                                        saved_text_embeds= hparams.saved_text_embeds,
+                                                                        saved_audio_embeds= False,
+                                                                        saved_text_embeds= False,
                                                                         sat_type = hparams.sat_type
                                                                         ),
                                             num_workers=16, batch_size=256, shuffle=False, drop_last=False,pin_memory=True)
