@@ -3,6 +3,7 @@
 wandb/
 logs/
 cache/
+cache_data/
 .data_prep/.ipynb_checkpoints/
 .models/.ipynb_checkpoints/
 .utils/.ipynb_checkpoints/
