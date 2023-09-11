@@ -18,7 +18,7 @@ cfg.validate_csv = os.path.join(cfg.data_path,'validate_df.csv')
 cfg.test_csv = os.path.join(cfg.data_path,'test_df.csv')
 
 ######################################## training hparams ##################################################
-cfg.log_dir = '/home/k.subash/GeoCLAP/logs'
+cfg.log_dir = '/storage1/fs1/jacobsn/Active/user_k.subash/projects/geoclap/logs'
 
 
 ####################################ESC10 subset############################################################
