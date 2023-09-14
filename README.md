@@ -7,10 +7,19 @@ For reproducibility, we have provided the required metadata of the dataset and i
     git clone git@github.com:mvrl/geoclap.git
     cd geoclap
     ```
-2. Create Environment and activate
+2. Setting up enviornment
     ```
     conda env create --file environment.yml
     conda activate geoclap
+    ```
+    Note: Despite having all the packages we need, for some reasons (yet to be diagnosed!) as discussed in [this issue](https://github.com/NVIDIA/TensorRT/issues/1747) one might get following error while running experiments `OSError: libcudnn.so.8: cannot open shared object file: No such file or directory`. The current solution is to reinstall pytorch as follows:
+    ```
+    conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+    ```
+
+    Also, you might run into following error: `AttributeError: partially initialized module 'charset_normalizer' has no attribute 'md__mypyc' (most likely due to a circular import)` as dicussed in [this issue](https://github.com/microsoft/TaskMatrix/issues/242). To fix this:
+    ```
+    pip install --force-reinstall charset-normalizer==3.1.0
     ```
 3. Please refer to `./data_prep/README.md` for details on SoundingEarth and instructions on how to download Sentinel2 imagery. Some scipts for basic pre-processing steps required for experiments related to `GeoCLAP` are also provided there.
 
