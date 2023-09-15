@@ -21,6 +21,14 @@ For reproducibility, we have provided the required metadata of the dataset and i
     ```
     pip install --force-reinstall charset-normalizer==3.1.0
     ```
+    Note: Instead of `conda` it could be easier to pull docker image `ksubash/geoclap:latest` for the project we provide using following steps:
+
+    ```
+    docker pull ksubash/geoclap:latest
+    docker run -v $HOME:$HOME --gpus all --shm-size=64gb -it ksubash/geoclap
+    source /opt/conda/bin/activate /opt/conda/envs/geoclap
+    ```
+
 3. Please refer to `./data_prep/README.md` for details on SoundingEarth and instructions on how to download Sentinel2 imagery. Some scipts for basic pre-processing steps required for experiments related to `GeoCLAP` are also provided there.
 
 4. Check both `config.py` and `./data_prep/config.py` to setup relevant paths by manually creating relevant directories. Copy the pre-trained checkpoint of `SATMAE` named as `finetune-vit-base-e7.pth` provided in [this google drive folder](https://drive.google.com/drive/folders/1Qgh9TNuZ3VZjf6Y6ffMcX5WXL6AHzerP?usp=share_link) to the location pointed by `cfg.pretrained_models_path/SATMAE`. Similarly, copy all data related `.csv` files (`final_metadata_with_captions.csv`,`train_df.csv`,`validate_csv`) to the location pointed by `cfg.DataRoot`.

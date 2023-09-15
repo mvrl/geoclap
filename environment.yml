@@ -1,4 +1,4 @@
-name: geoclap_test_final
+name: geoclap
 channels:
   - pytorch
   - nvidia
