@@ -1,3 +1,4 @@
+# This script is adapted from https://github.com/khdlr/SoundingEarth/blob/master/lib/evaluation.py
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
