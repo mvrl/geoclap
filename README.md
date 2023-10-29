@@ -1,6 +1,7 @@
-Implementation of `GeoCLAP` as described in our BMVC 2023 paper titled "Learning Tri-modal Embeddings for Zero-Shot Soundscape Mapping".
+Implementation of `GeoCLAP` as described in our BMVC 2023 paper titled **"Learning Tri-modal Embeddings for Zero-Shot Soundscape Mapping"**. \
+[arxiv](https://arxiv.org/abs/2309.10667)
 
-For reproducibility, we have provided the required metadata of the dataset and it's train/val/test split. We also provide the best checkpoints of `GeoCLAP` trained under different settings as shown in results tabulated in the paper. These files can be found in [this google drive folder](https://drive.google.com/drive/folders/1Qgh9TNuZ3VZjf6Y6ffMcX5WXL6AHzerP?usp=share_link).
+For reproducibility, we have provided the required metadata of the dataset and it's train/val/test split. We also provide the best checkpoints of `GeoCLAP` trained on sentinel2 as well as high resolution GoogleEarth imagery provided in SoundingEarth dataset. These files can be found in [this google drive folder](https://drive.google.com/drive/folders/1Qgh9TNuZ3VZjf6Y6ffMcX5WXL6AHzerP?usp=share_link).
 
 1. Clone this repo
     ```
