@@ -95,3 +95,21 @@ For reproducibility, we have provided the required metadata of the dataset and i
                                  --text_query "church bells;flowing river;animal farm;chirping birds;car horn;manufacturing factory" \
                                  --output_filename "demofile"
     ```
+
+**Citation:**
+```
+@inproceedings{khanal2023soundscape,
+  annotation = {remote_sensing,social_media},
+  title = {Learning Tri-modal Embeddings for Zero-Shot Soundscape Mapping},
+  code = {https://github.com/mvrl/geoclap},
+  author = {Khanal, Subash and Sastry, Srikumar and Dhakal, Aayush and Jacobs, Nathan},
+  year = {2023},
+  month = nov,
+  booktitle = {British Machine Vision Conference (BMVC)},
+  pdf = {https://arxiv.org/pdf/2309.10667.pdf},
+  primaryclass = {cs.CV},
+  author+an = {4=highlight}
+}
+```
+
+Follow more works from our lab here: [The Multimodal Vision Research Laboratory (MVRL)](https://mvrl.cse.wustl.edu)
