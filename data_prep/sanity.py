@@ -8,7 +8,7 @@ from tqdm import tqdm
 import torch
 warnings.filterwarnings('ignore')
 
-data_path = "/storage1/fs1/jacobsn/Active/user_k.subash/data/aporee"
+data_path = "/storage1/fs1/jacobsn/Active/user_k.subash/data_archive/aporee"
 
 def get_audio_paths(metadata_path): 
     df = pd.read_csv(metadata_path)

@@ -25,7 +25,7 @@ def read_csv(data_file):
 
 def get_processed_audio(audio_path,sr,model_type='AudioCLAP'):
     if model_type == 'AudioCLAP':
-        out = dict(clap_data_processor.get_audio_clap(path_to_audio=audio_path,sr=sr))
+        out = dict(clap_data_processor.get_audio_clap(path_to_audio=audio_path))
     else:
         print(model_type)
         raise NotImplementedError("Only Audio-Text Model selected to be used was CLAP")
@@ -113,7 +113,7 @@ class Dataset_soundscape(Dataset):
             sat_img = np.array(torch.permute(sat_img,[1,2,0]))
             sat_img = self.sat_transform(sat_img)
 
-        audio_path = os.path.join(cfg.sat_audio_tensors_path,long_id+'.pt')
+        audio_path = os.path.join(os.path.join(cfg.data_path,"raw_audio",long_id,mp3name))
         out_dict = {}
         out_dict['long_id'] = long_id
         if 'sat' in self.data_type:

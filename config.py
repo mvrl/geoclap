@@ -2,7 +2,7 @@ from yacs.config import CfgNode as CN
 import os
 cfg = CN()
 
-cfg.DataRoot = '/storage1/fs1/jacobsn/Active/user_k.subash/data/aporee'
+cfg.DataRoot = '/storage1/fs1/jacobsn/Active/user_k.subash/data_archive/aporee'
 cfg.pretrained_models_path = '/storage1/fs1/jacobsn/Active/user_k.subash/checkpoints/'
 
 #paths
