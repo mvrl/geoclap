@@ -397,7 +397,7 @@ if __name__ == '__main__':
     lr_logger = LearningRateMonitor(logging_interval='step')
     wb_logger = WandbLogger(save_dir=cfg.log_dir,project=args.project_name, name=args.run_name, mode=args.wandb_mode)
     ckpt_monitors = ((
-            ModelCheckpoint(monitor='val_loss', filename='{epoch}-{step}-{val_loss:.3f}', save_top_k = -1, every_n_epochs = 1,save_last=True,save_on_train_epoch_end=True)
+            ModelCheckpoint(monitor='val_loss', filename='{epoch}-{step}-{val_loss:.3f}', save_top_k = 5, every_n_epochs = 1,save_last=True,save_on_train_epoch_end=True)
         ))
 
     if args.mode == 'dev': 
@@ -423,6 +423,3 @@ if __name__ == '__main__':
             checkpoint = torch.load(args.ckpt_path)
             geoclap_model.load_state_dict(checkpoint['state_dict'])
             trainer.fit(geoclap_model)
-
-# Note: This training code saves checkpoints every 25 steps. This logging stratgey consumes too much of disk storage.
-# Therfore, after selecting the best checkpoint based on wandb logs, feel free to delete the unecessary checkpoints.
