@@ -46,17 +46,11 @@ source /opt/conda/bin/activate /opt/conda/envs/geoclap
 
 1. Refer to `./data_prep/README.md` for details on the SoundingEarth dataset and instructions on how to download Sentinel-2 imagery. Basic pre-processing scripts for GeoCLAP experiments are also provided there.
 
-2. Check both `config.py` and `./data_prep/config.py` to set up relevant paths by manually creating the required directories.
+2. Check both `geoclap/config.py` and `./data_prep/config.py` to set up relevant paths by manually creating the required directories.
    - Copy the pre-trained `SATMAE` checkpoint (`finetune-vit-base-e7.pth`) from [this Google Drive folder](https://drive.google.com/drive/folders/1Qgh9TNuZ3VZjf6Y6ffMcX5WXL6AHzerP?usp=share_link) to `cfg.pretrained_models_path/SATMAE`.
    - Copy all data-related `.csv` files (`final_metadata_with_captions.csv`, `train_df.csv`, `validate_csv`) to the location pointed to by `cfg.DataRoot`.
 
 ## 🏃 Training
-
-Once data preparation is complete, move up one directory so that `geoclap` can be run as a Python module:
-
-```bash
-cd ../
-```
 
 > **Note:** We use [wandb](https://wandb.ai/site) for experiment logging. Make sure `wandb` is correctly set up before launching experiments.
 
